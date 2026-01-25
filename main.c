@@ -35,15 +35,6 @@ typedef struct {
 	GList *cached_apps;
 } State;
 
-void draw_text(int x, int y, uint16_t fg, uint16_t bg, const char *str) {
-	while (*str) {
-		uint32_t uni;
-		tb_utf8_char_to_unicode(&uni, str);
-		tb_set_cell(x++, y, uni, fg, bg);
-		str += tb_utf8_char_length(*str);
-	}
-}
-
 GList *get_apps_for_category(int category_idx) {
 	GList *apps = NULL;
 	for (int m = 0; categories[category_idx].mimetypes[m] != NULL; ++m) {
@@ -75,9 +66,9 @@ void update_cached_apps(State *state) {
 }
 
 void draw_titles() {
-	draw_text(X_OFF_CATEGORIES, Y_OFF_TITLES, COLOR_TITLE, TB_DEFAULT, "CATEGORIES");
-	draw_text(X_OFF_APPS, Y_OFF_TITLES, COLOR_TITLE, TB_DEFAULT, "APPLICATIONS");
-	draw_text(X_OFF_FILE, Y_OFF_TITLES, COLOR_TITLE, TB_DEFAULT, "FILE");
+	tb_print(X_OFF_CATEGORIES, Y_OFF_TITLES, COLOR_TITLE, TB_DEFAULT, "CATEGORIES");
+	tb_print(X_OFF_APPS, Y_OFF_TITLES, COLOR_TITLE, TB_DEFAULT, "APPLICATIONS");
+	tb_print(X_OFF_FILE, Y_OFF_TITLES, COLOR_TITLE, TB_DEFAULT, "FILE");
 }
 
 void draw_categories(State *state) {
@@ -90,7 +81,7 @@ void draw_categories(State *state) {
 			fg = COLOR_SELECTED;
 			bg = COLOR_DEFAULT;
 		}
-		draw_text(X_OFF_CATEGORIES, Y_OFF_START + i, fg, bg, categories[i].name);
+		tb_print(X_OFF_CATEGORIES, Y_OFF_START + i, fg, bg, categories[i].name);
 	}
 }
 
@@ -106,10 +97,11 @@ void draw_apps_list(State *state) {
 					break;
 				}
 			}
-			if (!found)
+			if (!found) {
 				defaults = g_list_append(defaults, d);
-			else
+			} else {
 				g_object_unref(d);
+			}
 		}
 	}
 
@@ -132,12 +124,12 @@ void draw_apps_list(State *state) {
 
 		char name[256];
 		snprintf(name, sizeof(name), "%s %s", is_default ? "*" : " ", g_app_info_get_name(app));
-		draw_text(X_OFF_APPS, Y_OFF_START + i, fg, bg, name);
+		tb_print(X_OFF_APPS, Y_OFF_START + i, fg, bg, name);
 
 		if (G_IS_DESKTOP_APP_INFO(app)) {
 			const char *filename = g_desktop_app_info_get_filename(G_DESKTOP_APP_INFO(app));
 			if (filename) {
-				draw_text(X_OFF_FILE, Y_OFF_START + i, COLOR_DIM, bg, filename);
+				tb_print(X_OFF_FILE, Y_OFF_START + i, COLOR_DIM, bg, filename);
 			}
 		}
 	}
@@ -155,7 +147,7 @@ void draw(State *state) {
 		if (strncmp(state->message, "Failed", 6) == 0) {
 			msg_col = COLOR_ERROR;
 		}
-		draw_text(X_OFF_CATEGORIES, tb_height() - 1, msg_col, TB_DEFAULT, state->message);
+		tb_print(X_OFF_CATEGORIES, tb_height() - 1, msg_col, TB_DEFAULT, state->message);
 	}
 
 	tb_present();
