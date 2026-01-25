@@ -95,3 +95,12 @@ update-desktop-database ~/.local/share/applications
 less ~/.config/mimeapps.list
 less /usr/share/applications/mimeapps.list
 ```
+
+## More material
+
+- https://commandmasters.com/commands/xdg-mime-linux/
+- https://noman.sh/en/pages/xdg-mime
+- https://linux.die.net/man/1/xdg-mime
+- https://wiki.archlinux.org/title/XDG_MIME_Applications
+- https://gnome.pages.gitlab.gnome.org/libsoup/gio/
+- https://docs.gtk.org/gio/
