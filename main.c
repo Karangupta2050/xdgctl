@@ -23,7 +23,8 @@
 #define COLOR_TITLE (TB_YELLOW | TB_BOLD)
 #define COLOR_SELECTED TB_BLUE
 #define COLOR_DEFAULT TB_WHITE
-#define COLOR_DIM TB_DIM
+#define COLOR_BG TB_BLACK
+#define COLOR_DIM TB_WHITE
 #define COLOR_SUCCESS TB_GREEN
 #define COLOR_ERROR TB_RED
 
@@ -100,9 +101,9 @@ void update_cached_apps(State *state) {
 }
 
 void draw_titles() {
-	tb_print(X_OFF_CATEGORIES, Y_OFF_TITLES, COLOR_TITLE, TB_DEFAULT, "CATEGORIES");
-	tb_print(X_OFF_APPS, Y_OFF_TITLES, COLOR_TITLE, TB_DEFAULT, "APPLICATIONS");
-	tb_print(X_OFF_FILE, Y_OFF_TITLES, COLOR_TITLE, TB_DEFAULT, "FILE");
+	tb_print(X_OFF_CATEGORIES, Y_OFF_TITLES, COLOR_TITLE, COLOR_BG, "CATEGORIES");
+	tb_print(X_OFF_APPS, Y_OFF_TITLES, COLOR_TITLE, COLOR_BG, "APPLICATIONS");
+	tb_print(X_OFF_FILE, Y_OFF_TITLES, COLOR_TITLE, COLOR_BG, "FILE");
 }
 
 void draw_categories(State *state) {
@@ -111,7 +112,7 @@ void draw_categories(State *state) {
 	for (int i = 0; i < height && (i + state->category_offset) < count; ++i) {
 		int idx = i + state->category_offset;
 		uint16_t fg = COLOR_DEFAULT;
-		uint16_t bg = TB_DEFAULT;
+		uint16_t bg = COLOR_BG;
 		if (state->col == 0 && state->category_idx == idx) {
 			bg = COLOR_SELECTED;
 		} else if (state->category_idx == idx) {
@@ -131,7 +132,7 @@ void draw_apps_list(State *state) {
 			int idx = i + state->app_offset;
 			char *app_name = (char *)l->data;
 			uint16_t fg = COLOR_DEFAULT;
-			uint16_t bg = TB_DEFAULT;
+			uint16_t bg = COLOR_BG;
 			if (state->col == 1 && state->app_idx == idx) {
 				bg = COLOR_SELECTED;
 			}
@@ -166,7 +167,7 @@ void draw_apps_list(State *state) {
 		int idx = i + state->app_offset;
 		GAppInfo *app = (GAppInfo *)l->data;
 		uint16_t fg = COLOR_DEFAULT;
-		uint16_t bg = TB_DEFAULT;
+		uint16_t bg = COLOR_BG;
 		if (state->col == 1 && state->app_idx == idx) {
 			bg = COLOR_SELECTED;
 		}
@@ -204,7 +205,7 @@ void draw(State *state) {
 		if (strncmp(state->message, "Failed", 6) == 0) {
 			msg_col = COLOR_ERROR;
 		}
-		tb_print(X_OFF_CATEGORIES, tb_height() - 1, msg_col, TB_DEFAULT, state->message);
+		tb_print(X_OFF_CATEGORIES, tb_height() - 1, msg_col, COLOR_BG, state->message);
 	}
 
 	tb_present();
@@ -214,6 +215,7 @@ int main() {
 	if (tb_init() != 0) {
 		return 1;
 	}
+	tb_set_clear_attrs(COLOR_DEFAULT, COLOR_BG);
 
 	State state = {0, 0, 0, 0, 0, {0}, NULL, 0, 0};
 	char *dev_env = getenv("XDGCTL_DEV");
