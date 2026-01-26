@@ -18,6 +18,7 @@
 #define X_OFF_FILE (X_OFF_APPS + COL_WIDTH_APPS + 2)
 #define Y_OFF_START 3
 #define Y_OFF_TITLES 1
+#define Y_OFF_FOOTER 2
 
 // Color Scheme
 #define COLOR_TITLE (TB_YELLOW | TB_BOLD)
@@ -108,7 +109,7 @@ void draw_titles() {
 
 void draw_categories(State *state) {
 	int count = get_category_count(state);
-	int height = tb_height() - Y_OFF_START - 1;
+	int height = tb_height() - Y_OFF_START - Y_OFF_FOOTER;
 	for (int i = 0; i < height && (i + state->category_offset) < count; ++i) {
 		int idx = i + state->category_offset;
 		uint16_t fg = COLOR_DEFAULT;
@@ -124,7 +125,7 @@ void draw_categories(State *state) {
 }
 
 void draw_apps_list(State *state) {
-	int height = tb_height() - Y_OFF_START - 1;
+	int height = tb_height() - Y_OFF_START - Y_OFF_FOOTER;
 	if (state->is_dev_mode) {
 		int i = 0;
 		GList *l = g_list_nth(state->cached_apps, state->app_offset);
@@ -230,7 +231,7 @@ int main() {
 
 	struct tb_event ev;
 	while (1) {
-		int visible_height = tb_height() - Y_OFF_START - 1;
+		int visible_height = tb_height() - Y_OFF_START - Y_OFF_FOOTER;
 		if (state.category_idx < state.category_offset) {
 			state.category_offset = state.category_idx;
 		} else if (state.category_idx >= state.category_offset + visible_height) {
